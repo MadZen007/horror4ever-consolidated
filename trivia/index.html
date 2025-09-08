@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Horror Trivia - Horror4Ever</title>
+</head>
+<body>
+  <div class="game-container">
+    <!-- Header -->
+    <header class="game-header">
+      <a href="../../index.html" class="back-button">← Back to Home</a>
+      <div class="score-display">
+        <span class="score-label">Score:</span>
+        <span class="score-value" id="totalScore">0</span>
+      </div>
+      <div class="account-menu">
+        <button id="accountButton" class="account-button" onclick="toggleAccountMenu()">👤 Account</button>
+        <div id="accountDropdown" class="account-dropdown" style="display: none;">
+          <a href="profile.html" class="dropdown-item">📝 Edit Profile</a>
+          <a href="member-auth.html" class="dropdown-item">🔐 Login/Logout</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Contest Link Validation Screen -->
+    <div id="contestLinkScreen" class="screen">
+      <div class="start-content">
+        <h1 class="game-title">🎃 CONTEST TRIVIA 🎃</h1>
+        <p class="game-subtitle">$5000 Horror Trivia Contest</p>
+        <div class="contest-info">
+          <h3>Contest Rules:</h3>
+          <ul>
+            <li>This is a one-time contest entry</li>
+            <li>500 questions total</li>
+            <li>10 seconds per question</li>
+            <li>Score decreases as time runs out</li>
+            <li>Your final score will be recorded for the contest</li>
+          </ul>
+        </div>
+        <div class="link-validation">
+          <input type="text" id="contestLink" class="link-input" placeholder="Enter your contest link here...">
+          <div class="button-group">
+            <button id="validateLink" class="start-button">START CONTEST GAME</button>
+          </div>
+          <div id="linkError" class="error-message" style="display: none;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Game Start Screen -->
+    <div id="startScreen" class="screen">
+      <div class="start-content">
+        <h1 class="game-title">HORROR TRIVIA</h1>
+        <p class="game-subtitle">Do you REALLY know your Horror!?</p>
+        <div class="game-rules">
+          <h3>How to Play:</h3>
+          <ul>
+            <li>Each question has 4 multiple choice answers</li>
+            <li>You have 30 seconds per question</li>
+            <li>Score decreases as time runs out (max 10 points)</li>
+            <li>Get explanations for each answer</li>
+          </ul>
+        </div>
+        <div class="button-group">
+          <button id="startGame" class="start-button">START GAME</button>
+          <button id="suggestQuestion" class="suggest-button">SUGGEST QUESTION</button>
+          <button id="contestMode" class="contest-button">🎯 CONTEST MODE</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Question Screen -->
+    <div id="questionScreen" class="screen">
+      <div class="question-header">
+        <a href="../../index.html" class="back-button">← Back to Home</a>
+        <div class="question-counter">
+          Question <span id="currentQuestion">1</span>
+        </div>
+        <div class="timer-container">
+          <div class="timer-bar">
+            <div class="timer-fill" id="timerFill"></div>
+          </div>
+          <div class="timer-text">
+            <span id="timeLeft">10</span>s | <span id="currentScore">10</span> pts
+          </div>
+        </div>
+        <button id="stopGame" class="stop-button">STOP GAME</button>
+      </div>
+
+      <div class="question-content">
+        <div class="question-image-container">
+          <img id="questionImage" src="images/skeletonquestion.png" alt="Question Image" class="question-image" />
+        </div>
+        
+        <div class="question-text-container">
+          <h2 id="questionText" class="question-text"></h2>
+          
+          <div class="options-container">
+            <button class="option-button" data-option="0">
+              <span class="option-letter">A</span>
+              <span class="option-text" id="option0"></span>
+            </button>
+            <button class="option-button" data-option="1">
+              <span class="option-letter">B</span>
+              <span class="option-text" id="option1"></span>
+            </button>
+            <button class="option-button" data-option="2">
+              <span class="option-letter">C</span>
+              <span class="option-text" id="option2"></span>
+            </button>
+            <button class="option-button" data-option="3">
+              <span class="option-letter">D</span>
+              <span class="option-text" id="option3"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Suggestion Form Screen -->
+    <div id="suggestionScreen" class="screen">
+      <div class="suggestion-content">
+        <h1 class="suggestion-title">🎃 SUGGEST A QUESTION 🎃</h1>
+        <p class="suggestion-subtitle">Help us expand our horror trivia collection!</p>
+        
+        <form id="suggestionForm" class="suggestion-form">
+          <div class="form-group">
+            <label for="questionText">Question:</label>
+            <textarea id="questionText" name="question" required placeholder="Enter your horror trivia question here..."></textarea>
+          </div>
+          
+          <div class="form-group">
+            <label for="correctAnswer">Correct Answer:</label>
+            <input type="text" id="correctAnswer" name="correctAnswer" required placeholder="The correct answer">
+          </div>
+          
+          <div class="form-group">
+            <label for="wrongAnswer1">Wrong Answer 1:</label>
+            <input type="text" id="wrongAnswer1" name="wrongAnswer1" required placeholder="First wrong option">
+          </div>
+          
+          <div class="form-group">
+            <label for="wrongAnswer2">Wrong Answer 2:</label>
+            <input type="text" id="wrongAnswer2" name="wrongAnswer2" required placeholder="Second wrong option">
+          </div>
+          
+          <div class="form-group">
+            <label for="wrongAnswer3">Wrong Answer 3:</label>
+            <input type="text" id="wrongAnswer3" name="wrongAnswer3" required placeholder="Third wrong option">
+          </div>
+          
+          <div class="form-group">
+            <label for="questionImage">
+              Question Image: 
+              <span class="info-icon" title="Upload an image for your question. Supported formats: JPG, PNG, GIF. Max size: 5MB.">ⓘ</span>
+            </label>
+            <input type="file" id="questionImage" name="questionImage" accept="image/*" onchange="previewQuestionImage(this)">
+            <div id="imagePreview" class="image-preview" style="display: none;">
+              <img id="previewImg" src="" alt="Preview" style="max-width: 200px; max-height: 200px; border-radius: 8px; margin-top: 10px;">
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="explanation">Explanation (Optional):</label>
+            <textarea id="explanation" name="explanation" placeholder="Provide additional context or explanation for the correct answer..."></textarea>
+          </div>
+          
+          <div class="member-info-display">
+            <p><strong>Submitting as:</strong> <span id="memberDisplayName">Loading...</span></p>
+            <p><small>Your member info will be automatically included with your submission.</small></p>
+          </div>
+          
+          <div class="form-buttons">
+            <button type="submit" class="submit-button">SUBMIT QUESTION</button>
+            <button type="button" class="cancel-button" onclick="window.location.href='../../fun.html'">CANCEL</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Answer Screen -->
+    <div id="answerScreen" class="screen">
+      <div class="answer-content">
+        <div class="answer-result">
+          <div id="resultIcon" class="result-icon"></div>
+          <h2 id="resultText" class="result-text"></h2>
+        </div>
+        
+        <div class="answer-details">
+          <div class="correct-answer">
+            <strong>Correct Answer:</strong> <span id="correctAnswerText"></span>
+          </div>
+          <div class="explanation">
+            <strong>Explanation:</strong> <span id="explanationText"></span>
+          </div>
+          <div class="score-earned">
+            <strong>Points Earned:</strong> <span id="pointsEarned">0</span>
+          </div>
+        </div>
+        
+        <div class="next-question-timer">
+          <div class="timer-text">Next question in:</div>
+          <div class="timer-countdown" id="nextQuestionTimer">10</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Game Over Screen -->
+    <div id="gameOverScreen" class="screen">
+      <div class="game-over-content">
+        <h1 class="game-over-title">GAME OVER</h1>
+        <div class="final-score">
+          <h2>Final Score: <span id="finalScore">0</span></h2>
+          <p class="score-message" id="scoreMessage"></p>
+        </div>
+        
+        <div class="game-over-buttons">
+          <button id="playAgain" class="play-again-button">PLAY AGAIN</button>
+          <a href="../../fun.html" class="back-to-fun-button">BACK TO FUN</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    /* Contest link detection - automatically show contest screen when link present */
+    .screen { display: none; }
+    .screen.active { display: block; }
+    
+    /* Default: show start screen */
+    #startScreen { display: block; }
+    
+    /* When contest link is present, show contest screen instead */
+    body[data-contest-link="true"] #startScreen { display: none; }
+    body[data-contest-link="true"] #contestLinkScreen { display: block; }
+  </style>
+  
+  <script>
+    // Simple contest link detection - no complex JavaScript needed
+    const urlParams = new URLSearchParams(window.location.search);
+    const contestLink = urlParams.get('link');
+    
+    if (contestLink) {
+      // Set data attribute to trigger CSS rules
+      document.body.setAttribute('data-contest-link', 'true');
+      
+      // Pre-fill the contest link input
+      const linkInput = document.getElementById('contestLink');
+      if (linkInput) {
+        linkInput.value = contestLink;
+      }
+    }
+  </script>
+  
+  <script src="game.js"></script>
+  
+          <!-- Image preview function -->
+        <script>
+          function previewQuestionImage(input) {
+            const preview = document.getElementById('imagePreview');
+            const previewImg = document.getElementById('previewImg');
+            
+            if (input.files && input.files[0]) {
+              const reader = new FileReader();
+              reader.onload = function(e) {
+                previewImg.src = e.target.result;
+                preview.style.display = 'block';
+              };
+              reader.readAsDataURL(input.files[0]);
+            } else {
+              preview.style.display = 'none';
+            }
+          }
+          
+
+        </script>
+
+        <!-- Site visit tracking and profile prompt -->
+        <script>
+          // Track page visit when page loads
+          window.addEventListener('load', async () => {
+            try {
+              // Get or create a persistent session ID
+              let sessionId = localStorage.getItem('horror4ever_session_id');
+              if (!sessionId) {
+                sessionId = 'session-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
+                localStorage.setItem('horror4ever_session_id', sessionId);
+              }
+              
+              await fetch('/api/trivia/track', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  action: 'site_visit',
+                  data: {
+                    pageUrl: window.location.href,
+                    userAgent: navigator.userAgent,
+                    referrer: document.referrer || '',
+                    sessionId: sessionId
+                  }
+                })
+              });
+              
+              // Check if user just signed up and show profile prompt
+              checkForProfilePrompt();
+            } catch (error) {
+              console.log('Site visit tracking failed:', error);
+            }
+          });
+          
+          // Check if user should see profile customization prompt
+          function checkForProfilePrompt() {
+            const memberToken = localStorage.getItem('horror4ever_member_token');
+            const memberName = localStorage.getItem('horror4ever_member_name');
+            const hasSeenProfilePrompt = localStorage.getItem('horror4ever_profile_prompt_shown');
+            
+            // If user is logged in and hasn't seen the prompt yet
+            if (memberToken && memberName && !hasSeenProfilePrompt) {
+              // Wait a moment for the page to load, then show prompt
+              setTimeout(() => {
+                const message = `Welcome to Horror4Ever, ${memberName}! 🎃\n\nWould you like to personalize your profile now?\n\nYou can edit your profile anytime by going to your account in settings.`;
+                
+                if (confirm(message)) {
+                  window.location.href = 'profile.html';
+                } else {
+                  // Mark that they've seen the prompt
+                  localStorage.setItem('horror4ever_profile_prompt_shown', 'true');
+                }
+              }, 2000); // Wait 2 seconds after page load
+            }
+          }
+          
+          // Toggle account dropdown menu
+          function toggleAccountMenu() {
+            const dropdown = document.getElementById('accountDropdown');
+            dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
+          }
+          
+          // Close dropdown when clicking outside
+          document.addEventListener('click', function(event) {
+            const accountMenu = document.querySelector('.account-menu');
+            const dropdown = document.getElementById('accountDropdown');
+            
+            if (!accountMenu.contains(event.target)) {
+              dropdown.style.display = 'none';
+            }
+          });
+        </script>
+</body>
+</html> 

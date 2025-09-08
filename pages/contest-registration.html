@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contest Registration - Horror4Ever $5000 Trivia Contest</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="canonical" href="https://horror4ever.com/contest-registration.html">
+  <style>
+    .registration-container {
+      max-width: 600px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: rgba(42, 42, 42, 0.95);
+      border-radius: 15px;
+      border: 2px solid var(--accent-orange);
+      box-shadow: 0 0 30px rgba(255, 117, 24, 0.3);
+    }
+    
+    .registration-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .registration-title {
+      font-family: 'Arial Black', sans-serif;
+      color: var(--accent-orange);
+      font-size: 2.5rem;
+      font-weight: 900;
+      text-shadow: 0 0 20px rgba(255, 117, 24, 0.5);
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    
+    .registration-subtitle {
+      color: #e0e0e0;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+    
+    .registration-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    
+    .form-group label {
+      color: var(--accent-orange);
+      font-weight: 600;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .form-group input {
+      padding: 12px 16px;
+      border: 2px solid #333;
+      border-radius: 8px;
+      background: rgba(26, 26, 26, 0.8);
+      color: #e0e0e0;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--accent-orange);
+      box-shadow: 0 0 15px rgba(255, 117, 24, 0.3);
+    }
+    
+    .form-group input.error {
+      border-color: #dc3545;
+      box-shadow: 0 0 15px rgba(220, 53, 69, 0.3);
+    }
+    
+    .error-message {
+      color: #dc3545;
+      font-size: 0.9rem;
+      margin-top: 0.25rem;
+      display: none;
+    }
+    
+    .payment-section {
+      background: rgba(26, 26, 26, 0.5);
+      padding: 1.5rem;
+      border-radius: 10px;
+      border: 1px solid var(--accent-orange);
+      margin: 1rem 0;
+    }
+    
+    .payment-title {
+      color: var(--accent-orange);
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    
+    .payment-info {
+      color: #e0e0e0;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    
+    .kofi-button {
+      display: inline-block;
+      background: linear-gradient(45deg, #FF7518, #e65a0a);
+      color: white;
+      padding: 15px 30px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(255, 117, 24, 0.3);
+      margin: 0 auto;
+      display: block;
+      width: fit-content;
+    }
+    
+    .kofi-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 117, 24, 0.5);
+      background: linear-gradient(45deg, #e65a0a, #FF7518);
+    }
+    
+    .submit-section {
+      text-align: center;
+      margin-top: 2rem;
+    }
+    
+    .submit-btn {
+      background: linear-gradient(45deg, var(--accent-orange), #e65a0a);
+      color: white;
+      padding: 15px 40px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(255, 117, 24, 0.3);
+    }
+    
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 117, 24, 0.5);
+    }
+    
+    .submit-btn:disabled {
+      background: #666;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+    
+    .success-message {
+      background: rgba(40, 167, 69, 0.2);
+      border: 2px solid #28a745;
+      color: #28a745;
+      padding: 1.5rem;
+      border-radius: 10px;
+      text-align: center;
+      display: none;
+      margin-top: 1rem;
+    }
+    
+    .error-message-global {
+      background: rgba(220, 53, 69, 0.2);
+      border: 2px solid #dc3545;
+      color: #dc3545;
+      padding: 1.5rem;
+      border-radius: 10px;
+      text-align: center;
+      display: none;
+      margin-top: 1rem;
+    }
+    
+    .back-link {
+      text-align: center;
+      margin-top: 2rem;
+    }
+    
+    .back-link a {
+      color: var(--accent-orange);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    
+    .back-link a:hover {
+      color: #e65a0a;
+    }
+    
+    @media (max-width: 768px) {
+      .registration-container {
+        margin: 1rem;
+        padding: 1.5rem;
+      }
+      
+      .registration-title {
+        font-size: 2rem;
+      }
+      
+      .kofi-button {
+        padding: 12px 24px;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Back to Homepage Link -->
+  <div class="back-home-link">
+    <a href="index.html" class="back-home-btn">← Back to Homepage</a>
+  </div>
+
+  <main class="container">
+    <div class="registration-container">
+      <div class="registration-header">
+        <h1 class="registration-title">🎃 Contest Registration</h1>
+        <p class="registration-subtitle">Enter the $5000 Horror Trivia Contest!</p>
+      </div>
+      
+      <form id="registrationForm" class="registration-form">
+        <div class="form-group">
+          <label for="fullName">Full Name *</label>
+          <input type="text" id="fullName" name="fullName" required>
+          <div class="error-message" id="fullNameError">Please enter your full name</div>
+        </div>
+        
+        <div class="form-group">
+          <label for="email">Email Address *</label>
+          <input type="email" id="email" name="email" required>
+          <div class="error-message" id="emailError">Please enter a valid email address</div>
+        </div>
+        
+        <div class="form-group">
+          <label for="screenName">Screen Name for Scoreboard *</label>
+          <input type="text" id="screenName" name="screenName" required maxlength="20">
+          <div class="error-message" id="screenNameError">Please enter a screen name (max 20 characters)</div>
+        </div>
+        
+        <div class="payment-section">
+          <h3 class="payment-title">💰 Entry Fee Payment</h3>
+          <p class="payment-info">
+            Contest entry fee: <strong>$50</strong><br>
+            Click the button below to pay via Ko-fi
+          </p>
+                     <a href="https://ko-fi.com/ihearthorror" target="_blank" class="kofi-button" id="kofiButton">
+             💳 Pay $50 Entry Fee
+           </a>
+                     <p style="color: #999; font-size: 0.9rem; margin-top: 1rem; text-align: center;">
+             After payment, return here and click "Submit Registration"<br>
+             <strong style="color: #FF7518;">Note:</strong> We will verify your payment before sending confirmation email
+           </p>
+        </div>
+        
+        <div class="submit-section">
+          <button type="submit" class="submit-btn" id="submitBtn">
+            🎯 Submit Registration
+          </button>
+        </div>
+      </form>
+      
+             <div class="success-message" id="successMessage">
+         <h3>🎉 Registration Submitted!</h3>
+         <p>Thank you for your interest in the $5000 Horror Trivia Contest!</p>
+         <p>We will verify your payment and send you a confirmation email within 24 hours.</p>
+         <p><strong>Contest ID:</strong> <span id="contestId"></span></p>
+         <p style="font-size: 0.9rem; margin-top: 1rem;">
+           <strong>Next Steps:</strong><br>
+           1. Complete your payment via Ko-fi if you haven't already<br>
+           2. Check your email for payment verification<br>
+           3. You'll receive contest details once payment is confirmed
+         </p>
+       </div>
+      
+      <div class="error-message-global" id="errorMessage">
+        <h3>❌ Registration Failed</h3>
+        <p id="errorText">An error occurred. Please try again.</p>
+      </div>
+      
+      <div class="back-link">
+        <a href="contest-signup.html">← Back to Contest Info</a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Form validation and submission
+    const form = document.getElementById('registrationForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const successMessage = document.getElementById('successMessage');
+    const errorMessage = document.getElementById('errorMessage');
+    const errorText = document.getElementById('errorText');
+    
+    // Generate unique contest ID
+    function generateContestId() {
+      const timestamp = Date.now().toString(36);
+      const random = Math.random().toString(36).substr(2, 5);
+      return `H4E-${timestamp}-${random}`.toUpperCase();
+    }
+    
+    // Validate form fields
+    function validateField(field, errorElement, validationFn) {
+      const isValid = validationFn(field.value);
+      field.classList.toggle('error', !isValid);
+      errorElement.style.display = isValid ? 'none' : 'block';
+      return isValid;
+    }
+    
+    // Validation functions
+    const validations = {
+      fullName: (value) => value.trim().length >= 2,
+      email: (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value),
+      screenName: (value) => value.trim().length >= 3 && value.trim().length <= 20
+    };
+    
+    // Real-time validation
+    Object.keys(validations).forEach(fieldName => {
+      const field = document.getElementById(fieldName);
+      const errorElement = document.getElementById(fieldName + 'Error');
+      
+      field.addEventListener('blur', () => {
+        validateField(field, errorElement, validations[fieldName]);
+      });
+      
+      field.addEventListener('input', () => {
+        if (field.classList.contains('error')) {
+          validateField(field, errorElement, validations[fieldName]);
+        }
+      });
+    });
+    
+    // Form submission
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      // Validate all fields
+      let isValid = true;
+      Object.keys(validations).forEach(fieldName => {
+        const field = document.getElementById(fieldName);
+        const errorElement = document.getElementById(fieldName + 'Error');
+        if (!validateField(field, errorElement, validations[fieldName])) {
+          isValid = false;
+        }
+      });
+      
+      if (!isValid) {
+        return;
+      }
+      
+      // Show loading state
+      submitBtn.disabled = true;
+      submitBtn.textContent = '🔄 Submitting...';
+      successMessage.style.display = 'none';
+      errorMessage.style.display = 'none';
+      
+      try {
+        // Prepare form data
+        const formData = {
+          fullName: document.getElementById('fullName').value.trim(),
+          email: document.getElementById('email').value.trim(),
+          screenName: document.getElementById('screenName').value.trim(),
+          contestId: generateContestId()
+        };
+        
+                 // Store registration data
+         const storeResponse = await fetch('/api/contest-registrations', {
+           method: 'POST',
+           headers: {
+             'Content-Type': 'application/json',
+           },
+           body: JSON.stringify(formData),
+         });
+         
+         if (!storeResponse.ok) {
+           throw new Error('Failed to store registration data');
+         }
+         
+         // Send notification email to admin
+         const response = await fetch('/api/send-confirmation-email', {
+           method: 'POST',
+           headers: {
+             'Content-Type': 'application/json',
+           },
+           body: JSON.stringify(formData),
+         });
+        
+        const data = await response.json();
+        
+        if (response.ok) {
+          // Show success message
+          document.getElementById('contestId').textContent = formData.contestId;
+          successMessage.style.display = 'block';
+          form.style.display = 'none';
+          
+          // Scroll to success message
+          successMessage.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          throw new Error(data.error || 'Registration failed');
+        }
+        
+      } catch (error) {
+        console.error('Registration error:', error);
+        errorText.textContent = error.message || 'An error occurred. Please try again.';
+        errorMessage.style.display = 'block';
+        
+        // Scroll to error message
+        errorMessage.scrollIntoView({ behavior: 'smooth' });
+      } finally {
+        // Reset button state
+        submitBtn.disabled = false;
+        submitBtn.textContent = '🎯 Submit Registration';
+      }
+    });
+    
+    // Track Ko-fi button clicks
+    document.getElementById('kofiButton').addEventListener('click', () => {
+      // You can add analytics tracking here if needed
+      console.log('Ko-fi payment button clicked');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setup Profile Schema - Horror4Ever</title>
+    <style>
+        body {
+            background: #1a1a1a;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+            border: 2px solid #ff6b35;
+            border-radius: 15px;
+            padding: 30px;
+        }
+        h1 {
+            color: #ff6b35;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        button {
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            background: linear-gradient(45deg, #e55a2b, #e0851a);
+            transform: translateY(-2px);
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+        .success {
+            background: #1a4d1a;
+            border: 1px solid #4CAF50;
+            color: #4CAF50;
+        }
+        .error {
+            background: #4d1a1a;
+            border: 1px solid #f44336;
+            color: #f44336;
+        }
+        .step {
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(255, 107, 53, 0.1);
+            border-radius: 8px;
+            border: 1px solid #ff6b35;
+        }
+        .code-box {
+            background: #333;
+            border: 1px solid #555;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px 0;
+            font-family: monospace;
+            color: #00ff00;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 Setup Profile Schema 🔧</h1>
+        <p>This will add the profile_data column to the members table for the profile customization feature.</p>
+        
+        <div class="step">
+            <h3>Step 1: Update Database Schema</h3>
+            <p>Click the button below to add the profile_data column:</p>
+            <button onclick="updateSchema()">UPDATE PROFILE SCHEMA</button>
+        </div>
+        
+        <div class="step">
+            <h3>Step 2: Test the Profile System</h3>
+            <p>After updating the schema, you can test the profile system:</p>
+            <div class="code-box">
+                <a href="H4E-Trivia-Spoke/public/member-auth.html" style="color: #00ff00;">Sign up as a new member</a>
+            </div>
+            <p>Then visit the profile page to customize your profile!</p>
+        </div>
+        
+        <div id="result" class="result" style="display: none;"></div>
+    </div>
+
+    <script>
+        async function updateSchema() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.style.display = 'block';
+            resultDiv.className = 'result';
+            resultDiv.textContent = 'Updating schema...';
+            
+            try {
+                const response = await fetch('/api/dev-tools/setup-members', {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' }
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    resultDiv.className = 'result success';
+                    resultDiv.textContent = data.message;
+                } else {
+                    resultDiv.className = 'result error';
+                    resultDiv.textContent = `Error: ${data.error}`;
+                }
+            } catch (error) {
+                resultDiv.className = 'result error';
+                resultDiv.textContent = `Error: ${error.message}`;
+            }
+        }
+    </script>
+</body>
+</html> 

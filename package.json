@@ -1,0 +1,17 @@
+{
+  "name": "horror4ever-unified",
+  "version": "1.0.0",
+  "description": "Horror4Ever unified website with hub and trivia",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "bcryptjs": "^3.0.2",
+    "pg": "^8.16.3",
+    "resend": "^3.1.0",
+    "dotenv": "^16.3.1"
+  }
+}

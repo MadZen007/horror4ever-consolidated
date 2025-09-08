@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="canonical" href="https://horror4ever.com/" />
+    <meta name="description" content="Horror4Ever - Your ultimate destination for horror movies, trivia, articles, and more. Horror never dies...and neither do the fans!" />
+    <title>H4E - Horror4Ever</title>
+  </head>
+  <body>
+    <!-- Top ad container -->
+
+    
+    <header>
+      <!-- Logo Hover Effect Container -->
+      <div class="logo-hover-container">
+        <video src="images/H4E-loop-logo.mp4" alt="Ornate spooky doorway with text Horror 4 Ever, Dare to Enter?" class="hero-logo" autoplay loop muted playsinline></video>
+        <img src="images/fire-elmo.gif" alt="Horror4Ever Logo Hover" class="hover-gif" />
+        <audio id="logo-hover-audio" src="images/vincent_price_laugh.mp3"></audio>
+      </div>
+      <p class="tagline">Horror never dies...and neither do the fans!</p>
+    </header>
+
+    <main class="container">
+      <!-- Welcome Text Section -->
+      <div class="welcome-text">
+        <p>Tired of people saying horror movie fans are sick in the head?</p>
+        
+        <p>Well… I see you.</p>
+        
+        <p>(And so does that thing behind you... I'm just kidding... mostly.)</p>
+        
+        <p>We know, it's OK to be a horror hound. REALLY. It's OK to LOVE the jump scares, the gore, the feeling of your heart pounding in your chest like it's trying to escape.</p>
+        
+        <p>Why should you have to tone it down? The more intense, the better!</p>
+        
+        <p>This place? This is YOUR sanctuary. A place to let your scary flag fly HIGH.</p>
+        
+        <p>Here, you're among fiends... I mean, friends. We get it. We understand the THRILL.</p>
+        
+        <p>So, what are we about? Glad you asked.</p>
+        
+        <p><strong>Recommendations:</strong> Forget the "critically acclaimed" BS. We're talking REAL recommendations, from people who LIVE for the scream.</p>
+        
+        <p><strong>Contests & Games:</strong> Think you know your horror trivia? Prove it. Prizes may (or may NOT) involve ancient cursed artifacts.</p>
+        
+        <p><strong>Discussions:</strong> Let's dissect the latest terrors, celebrate the classics, and debate which demon is truly the most evil.</p>
+        
+        <p>Because let's be honest...</p>
+        
+        <p><strong>Normal is OVERRATED.</strong></p>
+        
+        <p>It's time to embrace the dark side... and maybe grab some popcorn. What do you say? Are you ready to join the scream team?</p>
+        
+        <p><strong>Welcome. You're HOME.</strong></p>
+      </div>
+
+      <!-- Feature Cards Section - 2x2 Layout -->
+      <div class="features-grid">
+        <!-- Contest Card (First Position) -->
+        <div class="contest-card">
+          <h2 class="contest-headline">$5000 Trivia Contest!!!</h2>
+          <p>You verses 500 questions (how good are you!?)</p>
+          <button onclick="triggerGhostTransition('./contest-signup.html')" class="btn contest-btn">Sign up Now!</button>
+        </div>
+        
+        <!-- Movies Card -->
+        <div class="card">
+          <h2 class="secondary-headline">MOVIES</h2>
+          <p>What to watch next!?</p>
+          <button onclick="triggerGhostTransition('./feature-movies/public/index.html')" class="btn">View Picks</button>
+        </div>
+        
+        <!-- Articles Card -->
+        <div class="card">
+          <h2 class="secondary-headline">ARTICLES</h2>
+          <p>Deep Thoughts</p>
+          <button onclick="triggerGhostTransition('./feature-articles/public/index.html')" class="btn">Dive in!</button>
+        </div>
+        
+        <!-- Store Card -->
+        <div class="card">
+          <h2 class="secondary-headline">STORE</h2>
+          <button onclick="triggerGhostTransition('./under-construction.html')" class="btn">BUY STUFF!</button>
+        </div>
+      </div>
+    </main>
+    <div class="support-about-row">
+      <a href="https://ko-fi.com/ihearthorror" class="btn" target="_blank" rel="noopener noreferrer" aria-label="Support us on Ko-fi">Support Us on Ko-fi</a>
+                                     <a href="subscription.html" class="btn" aria-label="Subscription" title="Help keep a horror-loving human fed! 🍕">🎃 Subscribe - $5/month</a>
+      <a href="about.html" class="btn" aria-label="About Us">About Us</a>
+      <!-- Placeholder: Add more info or buttons here as needed -->
+    </div>
+    <div id="ghost-overlay">
+      <img src="images/ghost-swipe-cropped.png" alt="Ghost swipe animation" />
+    </div>
+    <script src="ghost-transition.js"></script>
+    <!-- Static Subscription Manager (for Ko-fi integration) -->
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const container = document.querySelector('.logo-hover-container');
+      const audio = document.getElementById('logo-hover-audio');
+      if (container && audio) {
+        container.addEventListener('mouseenter', () => {
+          audio.currentTime = 0;
+          audio.play();
+        });
+        container.addEventListener('mouseleave', () => {
+          audio.pause();
+          audio.currentTime = 0;
+        });
+      }
+
+      // Meme popup logic
+      const memeBtn = document.getElementById('meme-btn');
+      const memeModal = document.getElementById('meme-modal');
+      const memeImg = document.getElementById('meme-img');
+      const memeClose = document.getElementById('meme-modal-close');
+      // TODO: Replace with your actual meme filenames
+      const memes = [
+        'memes/meme351.png',
+        'memes/meme491.jpg',
+        'memes/meme20.jpg',
+        'memes/meme30.jpg',
+        'memes/meme75.jpg',
+        'memes/meme128.jpg',
+        'memes/meme2.jpg',
+        'memes/meme36.jpg',
+        'memes/meme76.png',
+        'memes/meme223.jpg',
+        'memes/meme222.jpg',
+        'memes/meme60.png',
+        'memes/meme144.jpg',
+        'memes/meme177.jpg',
+        'memes/meme127.jpg',
+        'memes/meme51.jpg',
+        'memes/meme94.jpg',
+        'memes/meme148.jpg',
+        'memes/meme211.jpg',
+        'memes/meme189.jpg',
+        'memes/meme42.jpg',
+        'memes/meme175.jpg',
+        'memes/meme62.jpg',
+        'memes/meme66.jpg',
+        'memes/meme69.jpg',
+        'memes/meme79.jpg',
+        'memes/meme102.jpg',
+        'memes/meme119.jpg',
+        'memes/meme186.jpg',
+        'memes/meme16.jpg',
+        'memes/meme47.jpg',
+        'memes/meme73.jpg',
+        'memes/meme129.jpg',
+        'memes/meme8.jpg',
+        'memes/meme65.jpg',
+        'memes/meme89.jpg',
+        'memes/meme213.jpg',
+        'memes/meme39.jpg',
+        'memes/meme251.jpg',
+        'memes/meme245.jpg',
+        'memes/meme241.jpg',
+        'memes/meme249.jpg',
+        'memes/meme246.jpg',
+        'memes/meme240.jpg',
+        'memes/meme247.jpg',
+        'memes/meme248.jpg',
+        'memes/meme250.jpg',
+        'memes/meme146.jpg',
+        'memes/meme243.jpg',
+        'memes/meme239.jpg',
+        'memes/meme219.png',
+        'memes/meme237.jpg',
+        'memes/meme9.jpg',
+        'memes/meme238.jpg',
+        'memes/meme236.jpg',
+        'memes/meme114.jpg',
+        'memes/meme163.jpg',
+        'memes/meme235.jpg',
+        'memes/meme234.jpg',
+        'memes/meme229.jpg',
+        'memes/meme232.jpg',
+        'memes/meme231.jpg',
+        'memes/meme233.jpg',
+        'memes/meme380.jpg',
+        'memes/meme228.jpg',
+        'memes/meme226.jpg',
+        'memes/meme227.jpg',
+        'memes/meme225.jpg',
+        'memes/meme46.jpg',
+        'memes/meme224.jpg',
+        'memes/meme353.jpg',
+        'memes/meme22.jpg',
+        'memes/meme359.jpg',
+        'memes/meme356.jpg',
+        'memes/meme71.png',
+        'memes/meme13.jpg',
+        'memes/meme355.jpg',
+        'memes/meme106.jpg',
+        'memes/meme160.jpg',
+        'memes/meme195.jpg',
+        'memes/meme49.jpg',
+        'memes/meme77.jpg',
+        'memes/meme130.jpg',
+        'memes/meme181.jpg',
+        'memes/meme45.jpg',
+        'memes/meme63.jpg',
+        'memes/meme83.jpg',
+        'memes/meme99.jpg',
+        'memes/meme105.jpg',
+        'memes/meme157.jpg',
+        'memes/meme123.png',
+        'memes/meme40.jpg',
+        'memes/meme84.jpg',
+        'memes/meme165.jpg',
+        'memes/meme173.jpg',
+        'memes/meme171.jpg',
+        'memes/meme112.jpg',
+        'memes/meme110.jpg',
+        'memes/meme19.jpg',
+        'memes/meme159.jpg'
+      ];
+      memeBtn.addEventListener('click', function() {
+        const randomMeme = memes[Math.floor(Math.random() * memes.length)];
+        memeImg.src = 'images/' + randomMeme;
+        memeImg.alt = 'Random meme';
+        memeModal.style.display = 'flex';
+        memeClose.focus();
+      });
+      memeClose.addEventListener('click', function() {
+        memeModal.style.display = 'none';
+        memeImg.src = '';
+      });
+      memeModal.addEventListener('click', function(e) {
+        if (e.target === memeModal) {
+          memeModal.style.display = 'none';
+          memeImg.src = '';
+        }
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && memeModal.style.display === 'flex') {
+          memeModal.style.display = 'none';
+          memeImg.src = '';
+        }
+      });
+    });
+    </script>
+    
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <div class="footer-logo">
+            <img src="images/h4e-website-nobg-logo.png" alt="Horror4Ever Logo" class="footer-logo-img">
+          </div>
+          <p class="footer-description">Your ultimate destination for all things horror. From trivia to articles to movie reviews, we've got your spooky fix covered.</p>
+        </div>
+        
+        <div class="footer-section">
+          <h4 class="footer-subtitle">🔗 Connect With Us</h4>
+          <div class="social-links">
+            <a href="https://www.facebook.com/edward.kelly.863964/" target="_blank" rel="noopener noreferrer" class="social-link facebook">
+              <span class="social-icon">📘</span>
+              <span class="social-text">Facebook</span>
+            </a>
+            <a href="https://www.youtube.com/@h4e0013" target="_blank" rel="noopener noreferrer" class="social-link youtube">
+              <span class="social-icon">📺</span>
+              <span class="social-text">YouTube</span>
+            </a>
+            <a href="https://www.instagram.com/i_hearthorror" target="_blank" rel="noopener noreferrer" class="social-link instagram">
+              <span class="social-icon">📷</span>
+              <span class="social-text">Instagram</span>
+            </a>
+          </div>
+        </div>
+        
+        <div class="footer-section">
+          <h4 class="footer-subtitle">💀 Quick Links</h4>
+          <div class="footer-links">
+            <a href="about.html" class="footer-link">About Us</a>
+            <a href="fun.html" class="footer-link">Fun & Games</a>
+            <a href="feature-articles/public/index.html" class="footer-link">Articles</a>
+            <a href="feature-movies/public/index.html" class="footer-link">Movies</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2024 Horror4Ever. All rights reserved. | Made with 💀 by horror fans, for horror fans.</p>
+      </div>
+    </footer>
+    
+    <!-- Bottom ad container -->
+
+    
+    <button class="floating-meme-btn" id="meme-btn" aria-label="Show a random meme">
+      <img src="images/3D pumpkin no bg.png" alt="Show a random meme" />
+    </button>
+    <div id="meme-modal" class="meme-modal" style="display:none;">
+      <div class="meme-modal-content">
+        <button class="meme-modal-close" id="meme-modal-close" aria-label="Close meme">&times;</button>
+        <img id="meme-img" src="" alt="Random meme" />
+      </div>
+    </div>
+  </body>
+</html>

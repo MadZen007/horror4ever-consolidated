@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="canonical" href="https://horror4ever.com/feature-articles/public/index.html" />
+    <meta name="description" content="Horror articles and deep thoughts on Horror4Ever. Dive into the world of horror!" />
+    <title>Articles - Horror4Ever</title>
+    <style>
+      body {
+        background-color: black;
+        color: white;
+        text-align: center;
+        font-family: sans-serif;
+        padding: 2rem;
+      }
+      .redirect-message {
+        margin: 2rem 0;
+        font-size: 1.2rem;
+        color: #FF7518;
+      }
+      .spinner {
+        border: 4px solid #333;
+        border-top: 4px solid #FF7518;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        animation: spin 1s linear infinite;
+        margin: 2rem auto;
+      }
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🎃 Articles Spoke 🎃</h1>
+    <div class="redirect-message">
+      <p>Redirecting to the Articles system...</p>
+      <div class="spinner"></div>
+    </div>
+    <script>
+      // Redirect to the Articles Spoke after a brief delay
+      setTimeout(() => {
+        window.location.href = 'feature-articles/public/index.html';
+      }, 1500);
+    </script>
+  </body>
+</html>

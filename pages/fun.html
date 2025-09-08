@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="canonical" href="https://horror4ever.com/fun.html" />
+  <meta name="description" content="Fun horror content, memes, and entertainment on Horror4Ever. Shall we play a game?" />
+  <title>Fun - Horror4Ever</title>
+  <style>
+    body {
+      background: #000;
+      color: #E0E0E0;
+      font-family: var(--font-body, 'Alegreya', serif);
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+    
+    .fun-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    
+    .hero-image {
+      width: 100%;
+      max-width: 800px;
+      height: auto;
+      display: block;
+      margin: 0 auto 3rem auto;
+      border-radius: 15px;
+      box-shadow: 0 0 30px 10px rgba(255, 117, 24, 0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .hero-image:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 40px 15px rgba(255, 117, 24, 0.6);
+    }
+    
+    .intro-text {
+      text-align: center;
+      font-size: 1.3rem;
+      line-height: 1.8;
+      margin-bottom: 4rem;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      color: #F0F0F0;
+    }
+    
+    .cards-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 3rem;
+    }
+    
+    .fun-card {
+      background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+      border: 2px solid var(--accent-orange, #FF7518);
+      border-radius: 15px;
+      padding: 2.5rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .fun-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, transparent, rgba(255, 117, 24, 0.1), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .fun-card:hover::before {
+      opacity: 1;
+    }
+    
+    .fun-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(255, 117, 24, 0.3);
+      border-color: #FF8C42;
+    }
+    
+    .card-title {
+      font-family: var(--font-secondary-headline, 'Belleza', sans-serif);
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: var(--accent-orange, #FF7518);
+      margin-bottom: 1.5rem;
+      text-shadow: 0 0 10px rgba(255, 117, 24, 0.5);
+    }
+    
+    .card-text {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      color: #D0D0D0;
+    }
+    
+    .card-button {
+      background: linear-gradient(135deg, var(--accent-orange, #FF7518), #FF8C42);
+      color: #000;
+      font-family: var(--font-secondary-headline, 'Belleza', sans-serif);
+      font-size: 1.2rem;
+      font-weight: bold;
+      padding: 1rem 2.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+      position: relative;
+      overflow: hidden;
+      display: inline-block;
+    }
+    
+    .card-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.5s;
+    }
+    
+    .card-button:hover::before {
+      left: 100%;
+    }
+    
+    .card-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px 5px rgba(255, 117, 24, 0.6);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+    
+    .card-button:active {
+      transform: scale(0.98);
+    }
+    
+    .back-button {
+      position: fixed;
+      top: 2rem;
+      left: 2rem;
+      background: rgba(0, 0, 0, 0.8);
+      color: var(--accent-orange, #FF7518);
+      font-family: var(--font-secondary-headline, 'Belleza', sans-serif);
+      font-size: 1rem;
+      font-weight: bold;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: 2px solid var(--accent-orange, #FF7518);
+      z-index: 1000;
+    }
+    
+    .back-button:hover {
+      background: var(--accent-orange, #FF7518);
+      color: #000;
+      transform: scale(1.05);
+    }
+    
+
+    
+    .subscription-prompt {
+      animation: fadeIn 0.3s ease-in;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translate(-50%, -60%); }
+      to { opacity: 1; transform: translate(-50%, -50%); }
+    }
+    
+    @media (max-width: 768px) {
+      .fun-container {
+        padding: 1rem;
+      }
+      
+      .cards-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      
+      .fun-card {
+        padding: 2rem;
+      }
+      
+      .card-title {
+        font-size: 2rem;
+      }
+      
+      .intro-text {
+        font-size: 1.1rem;
+      }
+      
+      .back-button {
+        position: relative;
+        top: auto;
+        left: auto;
+        margin-bottom: 2rem;
+        display: inline-block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html" class="back-button">← Back to Home</a>
+  
+  <!-- Ad containers -->
+  
+  
+  <div class="fun-container">
+    <img src="images/FUN-landing-image.gif" alt="Fun Horror" class="hero-image" />
+    
+    <div class="intro-text">
+      <p>Welcome to the FUN zone! Here's where we test your horror knowledge and let you shape the future of our spooky adventures. Whether you're a horror veteran or just getting started, there's something here to make your spine tingle with excitement!</p>
+    </div>
+    
+    <div class="cards-container">
+      <div class="fun-card">
+        <h2 class="card-title">TRIVIA</h2>
+        <p class="card-text">Do you REALLY know your Horror!?</p>
+        <a href="H4E-Trivia-Spoke/public/index.html" class="card-button">Prove it!</a>
+      </div>
+      
+      <div class="fun-card">
+        <h2 class="card-title">SUGGESTIONS</h2>
+        <p class="card-text">Tell us what kind of games you want us to make next!</p>
+        <a href="H4E-Trivia-Spoke/public/member-auth.html" class="card-button">Tell us!</a>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Bottom ad container -->
+  
+  
+
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="canonical" href="https://horror4ever.com/about.html" />
+  <meta name="description" content="Learn about Horror4Ever - the ultimate horror community. Meet the team behind your favorite horror destination." />
+  <title>About Us - Horror4Ever</title>
+  <style>
+    body {
+      background: #000;
+      color: #E0E0E0;
+      font-family: var(--font-body, 'Alegreya', serif);
+      line-height: 1.8;
+      margin: 0;
+      padding: 0;
+    }
+    .about-container {
+      display: flex;
+      min-height: 100vh;
+      padding: 2rem;
+      gap: 3rem;
+      align-items: flex-start;
+    }
+    .about-images {
+      flex: 0 0 300px;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .about-images img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 0 20px 5px rgba(255, 117, 24, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .about-images img:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 25px 8px rgba(255, 117, 24, 0.5);
+    }
+    .about-content {
+      flex: 1;
+      max-width: 800px;
+      padding: 2rem 0;
+    }
+    .about-text {
+      font-size: 1.2rem;
+      margin-bottom: 3rem;
+      text-align: justify;
+    }
+    .about-text p {
+      margin-bottom: 1.5rem;
+      text-indent: 1rem;
+    }
+    .about-text p:first-child {
+      text-indent: 0;
+    }
+    .about-buttons {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      margin-top: 3rem;
+    }
+    .about-buttons .btn {
+      background: linear-gradient(135deg, var(--accent-orange, #FF7518), #FF8C42);
+      color: #000;
+      font-family: var(--font-secondary-headline, 'Belleza', sans-serif);
+      font-size: 1.1rem;
+      font-weight: bold;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+      position: relative;
+      overflow: hidden;
+    }
+    .about-buttons .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
+    }
+    .about-buttons .btn:hover::before {
+      left: 100%;
+    }
+    .about-buttons .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px 5px rgba(255, 117, 24, 0.6);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+    .about-buttons .btn:active {
+      transform: scale(0.98);
+    }
+    @media (max-width: 768px) {
+      .about-container {
+        flex-direction: column;
+        padding: 1rem;
+      }
+      .about-images {
+        flex: none;
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+      }
+      .about-text {
+        font-size: 1rem;
+      }
+      .about-text p {
+        text-indent: 0;
+      }
+      .about-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="about-container">
+    <div class="about-images">
+      <img src="images/me1.jpg" alt="Me" />
+      <img src="images/me2.jpg" alt="Me" />
+    </div>
+    <div class="about-content">
+      <div class="about-text">
+        <p>I'm lucky enough to have been raised in the 80's and was the perfect age to truly embrace the golden age of horror! I actually snuck into the theater to see John Carpenter's "The Thing" and that movie SHATTERED my very concept of horror! Before that, monsters were simple, and obvious. You always knew who the bad guy was on sight, and the danger had rules...Vampires can't play in the sun...silver bullets for werewolves...you get the idea. But the Thing redefined it all...from that day on, i was OBSESSED with all the levels and layers that fear could truly have. Now, as an adult, that love is still just as strong.</p>
+        
+        <p>I recently made a massive leap, moving from the weird and wonderful Austin, TX, all the way to the vibrant chaos of Bangkok, Thailand! The dream was big, the adventure exciting... until the job I had lined up here pulled a vanishing act right before I started. So, yup, I'm currently unemployed in a foreign country.</p>
+        
+        <p>This site, this community, it's more than just a passion project now. It's a lifeline, a labor of love that I'm hoping can also help me stay alive (or at least undead!) while I navigate these uncharted, spooky waters. Any donations are also monstrously appreciated and go directly towards keeping this site running and, well, keeping me fed (brains are expensive, you know!).</p>
+        
+                 <p>Subscribers will be the first to know about new features! They'll get to test out new features, and make suggestions for what they want to see added next! Plus, your $5/month helps keep this horror-loving human fed while I build more spooky content for you! 🍕</p>
+      </div>
+      <div class="about-buttons">
+        <a href="https://ko-fi.com/ihearthorror" class="btn" target="_blank" rel="noopener noreferrer">Support Us on Ko-fi</a>
+        <a href="index.html" class="btn">Return to Homepage</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html> 

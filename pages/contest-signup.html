@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="canonical" href="https://horror4ever.com/contest-signup" />
+  <meta name="description" content="Horror4Ever $5000 Trivia Contest - Descend into the trivia tomb and test your horror knowledge against 500 questions!" />
+  <title>$5000 Trivia Contest - Horror4Ever</title>
+</head>
+<body>
+
+  <!-- Back to Homepage Link -->
+  <div class="back-home-link">
+    <a href="index.html" class="back-home-btn">← Back to Homepage</a>
+  </div>
+
+  <main class="container">
+    <!-- Contest Hero Section -->
+    <div class="contest-hero">
+      <img src="images/contest-landing-page.png" alt="Horror4Ever $5000 Trivia Contest" class="contest-hero-image" />
+    </div>
+
+    <!-- Contest Description -->
+    <div class="contest-description">
+      <h1 class="contest-title">Descend Into the Trivia Tomb... IF YOU DARE!</h1>
+      
+      <div class="contest-text">
+        <p>For 30 days, the gates of our trivia tomb will swing open, beckoning you into a realm of 500 mind-bending horror questions! But beware, time is the ultimate monster...</p>
+        
+        <p>Within this chilling challenge, each question holds a potential 10 points, but you only have 10 heart-pounding seconds to answer! Swiftness is your ally; hesitation, your doom! Answer wrong, or too late, and that question fades into the abyss, NEVER to return! Can you reach all 5000 points possible?</p>
+        
+        <p>Only one survivor will emerge from this nightmare with the ultimate prize: <span class="prize-amount">$5000!</span></p>
+        
+        <p>This isn't chance; this is your moment to prove your mettle! It's raw horror knowledge and the skill to recall it on the fly.</p>
+        
+        <p>For just <strong>$50</strong>, you can test your knowledge.</p>
+        
+        <p>Weekly leaderboard updates will chart the rising and falling fortunes of our contestants... will you see YOUR name on top?</p>
+      </div>
+
+             <!-- Sign Up Button -->
+       <div class="contest-signup-section">
+         <button onclick="triggerGhostTransition('./contest-registration.html')" class="btn contest-signup-btn">SIGN UP NOW - $50</button>
+       </div>
+
+               <!-- FAQ and Rules Buttons -->
+        <div class="contest-buttons-section">
+          <button onclick="triggerGhostTransition('./contest-faq.html')" class="btn contest-faq-btn">📋 FAQ</button>
+          <button onclick="triggerGhostTransition('./contest-rules.html')" class="btn contest-rules-btn">⚖️ RULES & TERMS</button>
+        </div>
+    </div>
+  </main>
+
+
+
+  <div id="ghost-overlay">
+    <img src="images/ghost-swipe-cropped.png" alt="Ghost swipe animation" />
+  </div>
+  <script src="ghost-transition.js"></script>
+
+
+  
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <div class="footer-logo">
+          <img src="images/h4e-website-nobg-logo.png" alt="Horror4Ever Logo" class="footer-logo-img">
+        </div>
+        <p class="footer-description">Your ultimate destination for all things horror. From trivia to articles to movie reviews, we've got your spooky fix covered.</p>
+      </div>
+      
+      <div class="footer-section">
+        <h4 class="footer-subtitle">🔗 Connect With Us</h4>
+        <div class="social-links">
+          <a href="https://www.facebook.com/edward.kelly.863964/" target="_blank" rel="noopener noreferrer" class="social-link facebook">
+            <span class="social-icon">📘</span>
+            <span class="social-text">Facebook</span>
+          </a>
+          <a href="https://www.youtube.com/@h4e0013" target="_blank" rel="noopener noreferrer" class="social-link youtube">
+            <span class="social-icon">📺</span>
+            <span class="social-text">YouTube</span>
+          </a>
+          <a href="https://www.instagram.com/i_hearthorror" target="_blank" rel="noopener noreferrer" class="social-link instagram">
+            <span class="social-icon">📷</span>
+            <span class="social-text">Instagram</span>
+          </a>
+        </div>
+      </div>
+      
+      <div class="footer-section">
+        <h4 class="footer-subtitle">💀 Quick Links</h4>
+        <div class="footer-links">
+          <a href="about.html" class="footer-link">About Us</a>
+          <a href="fun.html" class="footer-link">Fun & Games</a>
+          <a href="feature-articles/public/index.html" class="footer-link">Articles</a>
+          <a href="feature-movies/public/index.html" class="footer-link">Movies</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p class="footer-copyright">© 2024 Horror4Ever. All rights reserved. | Made with 💀 by horror fans, for horror fans.</p>
+    </div>
+  </footer>
+</body>
+</html>

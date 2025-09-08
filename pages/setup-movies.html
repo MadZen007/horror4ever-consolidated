@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setup Movies Database - Horror4Ever</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .setup-container {
+            background: #111;
+            border: 2px solid #ff6600;
+            border-radius: 15px;
+            padding: 40px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+        }
+
+        .setup-title {
+            font-size: 2rem;
+            color: #ff6600;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(255, 102, 0, 0.5);
+        }
+
+        .setup-description {
+            font-size: 1.1rem;
+            color: #ccc;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .setup-button {
+            background: linear-gradient(135deg, #ff6600, #e55a2b);
+            color: #000;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .setup-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(255, 102, 0, 0.4);
+        }
+
+        .setup-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .message {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .message.success {
+            background: rgba(68, 255, 68, 0.1);
+            border: 2px solid #44ff44;
+            color: #44ff44;
+        }
+
+        .message.error {
+            background: rgba(255, 68, 68, 0.1);
+            border: 2px solid #ff4444;
+            color: #ff4444;
+        }
+
+        .back-link {
+            margin-top: 30px;
+        }
+
+        .back-link a {
+            color: #ff6600;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .back-link a:hover {
+            color: #44ff44;
+        }
+    </style>
+</head>
+<body>
+    <div class="setup-container">
+        <h1 class="setup-title">🎬 Setup Movies Database</h1>
+        <p class="setup-description">
+            This will create the movies table in your CockroachDB database. 
+            The table will store movie information including YouTube video IDs for reviews.
+        </p>
+        
+        <button id="setupButton" class="setup-button" onclick="setupMovies()">
+            Create Movies Table
+        </button>
+        
+        <div id="message" class="message" style="display: none;"></div>
+        
+        <div class="back-link">
+            <a href="feature-admin/dashboard.html">← Back to Admin Dashboard</a>
+        </div>
+    </div>
+
+    <script>
+        async function setupMovies() {
+            const button = document.getElementById('setupButton');
+            const message = document.getElementById('message');
+            
+            // Disable button and show loading
+            button.disabled = true;
+            button.textContent = 'Creating Table...';
+            message.style.display = 'none';
+            
+            try {
+                const response = await fetch('/api/dev-tools/setup', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ action: 'setup-movies' })
+                });
+                
+                const result = await response.json();
+                
+                if (response.ok) {
+                    message.className = 'message success';
+                    message.textContent = '✅ ' + result.message;
+                } else {
+                    throw new Error(result.error || 'Failed to create movies table');
+                }
+                
+            } catch (error) {
+                console.error('Setup error:', error);
+                message.className = 'message error';
+                message.textContent = '❌ ' + error.message;
+            } finally {
+                // Re-enable button
+                button.disabled = false;
+                button.textContent = 'Create Movies Table';
+                message.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html> 

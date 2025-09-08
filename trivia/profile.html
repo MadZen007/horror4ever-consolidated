@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Member Profile - Horror4Ever</title>
+  <style>
+    .profile-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .profile-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .profile-header h1 {
+      color: #ff6b35;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      text-shadow: 0 0 10px rgba(255, 107, 53, 0.5);
+    }
+    
+    .profile-header p {
+      color: #ccc;
+      font-size: 1.1rem;
+    }
+    
+    .profile-stats {
+      background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+      border: 2px solid #ff6b35;
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    
+    .total-score {
+      font-size: 3rem;
+      color: #ff6b35;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    
+    .skill-level {
+      font-size: 1.5rem;
+      color: #4CAF50;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .stat-item {
+      background: rgba(255, 107, 53, 0.1);
+      padding: 15px;
+      border-radius: 10px;
+      border: 1px solid #ff6b35;
+    }
+    
+    .stat-number {
+      font-size: 1.8rem;
+      color: #ff6b35;
+      font-weight: bold;
+    }
+    
+    .stat-label {
+      color: #ccc;
+      font-size: 0.9rem;
+    }
+    
+    .profile-form {
+      background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+      border: 2px solid #ff6b35;
+      border-radius: 15px;
+      padding: 30px;
+    }
+    
+    .form-section {
+      margin-bottom: 30px;
+    }
+    
+    .form-section h3 {
+      color: #ff6b35;
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #ff6b35;
+      padding-bottom: 5px;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      display: block;
+      color: #ff6b35;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #444;
+      border-radius: 8px;
+      background: #1a1a1a;
+      color: #fff;
+      font-size: 16px;
+      transition: border-color 0.3s ease;
+    }
+    
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #ff6b35;
+    }
+    
+    .form-group textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+    
+    .profile-pic-section {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    .current-pic {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 3px solid #ff6b35;
+      margin-bottom: 15px;
+      object-fit: cover;
+    }
+    
+    .movies-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+    }
+    
+    .movie-input {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .movie-input input {
+      flex: 1;
+    }
+    
+    .movie-number {
+      color: #ff6b35;
+      font-weight: bold;
+      min-width: 30px;
+    }
+    
+    .form-buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      margin-top: 30px;
+    }
+    
+    .save-button {
+      background: linear-gradient(45deg, #ff6b35, #f7931e);
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .save-button:hover {
+      background: linear-gradient(45deg, #e55a2b, #e0851a);
+      transform: translateY(-2px);
+    }
+    
+    .cancel-button {
+      background: #666;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .cancel-button:hover {
+      background: #555;
+    }
+    
+    .success-message {
+      background: #1a4d1a;
+      border: 1px solid #4CAF50;
+      color: #4CAF50;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    
+    .error-message {
+      background: #4d1a1a;
+      border: 1px solid #f44336;
+      color: #f44336;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="game-container">
+    <header class="game-header">
+      <a href="../../fun.html" class="back-button">← Back to Fun</a>
+      <div class="score-display">
+        <span class="score-label">Member Profile</span>
+      </div>
+    </header>
+
+    <div class="profile-container">
+      <div class="profile-header">
+        <h1>🎃 PERSONALIZE YOUR PROFILE 🎃</h1>
+        <p>Make your Horror4Ever profile uniquely terrifying!</p>
+      </div>
+
+      <!-- Profile Stats Section -->
+      <div class="profile-stats">
+        <div class="total-score" id="totalScore">0</div>
+        <div class="skill-level" id="skillLevel">Horror Novice</div>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-number" id="gamesPlayed">0</div>
+            <div class="stat-label">Games Played</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" id="questionsAnswered">0</div>
+            <div class="stat-label">Questions Answered</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" id="correctAnswers">0</div>
+            <div class="stat-label">Correct Answers</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" id="avgScore">0</div>
+            <div class="stat-label">Avg Score</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Profile Form -->
+      <form id="profileForm" class="profile-form">
+        <div class="form-section">
+          <h3>👤 Basic Information</h3>
+          <div class="form-group">
+            <label for="username">Fun Username:</label>
+            <input type="text" id="username" name="username" required placeholder="Enter a spooky username...">
+          </div>
+          
+          <div class="profile-pic-section">
+            <img id="currentProfilePic" class="current-pic" src="../images/skeletonquestion.png" alt="Profile Picture">
+            <div class="form-group">
+              <label for="profilePic">Upload New Profile Picture:</label>
+              <input type="file" id="profilePic" name="profilePic" accept="image/*" onchange="previewProfilePic(this)">
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="description">About Me:</label>
+            <textarea id="description" name="description" placeholder="Tell us about your horror obsession..."></textarea>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3>🎬 Top 10 Favorite Horror Movies</h3>
+          <div class="movies-list" id="moviesList">
+            <!-- Movie inputs will be generated here -->
+          </div>
+        </div>
+
+        <div class="form-buttons">
+          <button type="submit" class="save-button">SAVE PROFILE</button>
+          <button type="button" class="cancel-button" onclick="window.location.href='index.html'">BACK TO GAME</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Check if user is logged in
+    function checkAuth() {
+      const token = localStorage.getItem('horror4ever_member_token');
+      const name = localStorage.getItem('horror4ever_member_name');
+      
+      if (!token || !name) {
+        alert('Please log in to access your profile.');
+        window.location.href = 'member-auth.html';
+        return false;
+      }
+      return true;
+    }
+
+    // Generate skill level based on score
+    function getSkillLevel(score) {
+      if (score >= 10000) return "Horror Legend";
+      if (score >= 5000) return "Fear Master";
+      if (score >= 2000) return "Horror Expert";
+      if (score >= 1000) return "Scare Specialist";
+      if (score >= 500) return "Horror Enthusiast";
+      if (score >= 100) return "Horror Fan";
+      return "Horror Novice";
+    }
+
+    // Load user stats
+    async function loadUserStats() {
+      try {
+        const memberToken = localStorage.getItem('horror4ever_member_token');
+        const response = await fetch(`/api/trivia/member/signup?memberToken=${memberToken}`, {
+          method: 'GET'
+        });
+
+        if (response.ok) {
+          const stats = await response.json();
+          document.getElementById('totalScore').textContent = stats.totalScore || 0;
+          document.getElementById('skillLevel').textContent = getSkillLevel(stats.totalScore || 0);
+          document.getElementById('gamesPlayed').textContent = stats.gamesPlayed || 0;
+          document.getElementById('questionsAnswered').textContent = stats.questionsAnswered || 0;
+          document.getElementById('correctAnswers').textContent = stats.correctAnswers || 0;
+          document.getElementById('avgScore').textContent = Math.round(stats.avgScore || 0);
+        }
+      } catch (error) {
+        console.error('Error loading stats:', error);
+      }
+    }
+
+    // Load user profile
+    async function loadUserProfile() {
+      try {
+        const memberToken = localStorage.getItem('horror4ever_member_token');
+        const response = await fetch(`/api/trivia/member/login?memberToken=${memberToken}`, {
+          method: 'GET'
+        });
+
+        if (response.ok) {
+          const profile = await response.json();
+          document.getElementById('username').value = profile.username || '';
+          document.getElementById('description').value = profile.description || '';
+          
+          if (profile.profilePic) {
+            document.getElementById('currentProfilePic').src = profile.profilePic;
+          }
+          
+          // Load movies
+          const movies = profile.favoriteMovies || [];
+          for (let i = 0; i < 10; i++) {
+            const movieInput = document.getElementById(`movie${i + 1}`);
+            if (movieInput) {
+              movieInput.value = movies[i] || '';
+            }
+          }
+        }
+      } catch (error) {
+        console.error('Error loading profile:', error);
+      }
+    }
+
+    // Generate movie input fields
+    function generateMovieInputs() {
+      const moviesList = document.getElementById('moviesList');
+      for (let i = 1; i <= 10; i++) {
+        const movieDiv = document.createElement('div');
+        movieDiv.className = 'movie-input';
+        movieDiv.innerHTML = `
+          <span class="movie-number">${i}.</span>
+          <input type="text" id="movie${i}" name="movie${i}" placeholder="Enter your ${i}${getOrdinalSuffix(i)} favorite horror movie...">
+        `;
+        moviesList.appendChild(movieDiv);
+      }
+    }
+
+    function getOrdinalSuffix(num) {
+      if (num === 1) return 'st';
+      if (num === 2) return 'nd';
+      if (num === 3) return 'rd';
+      return 'th';
+    }
+
+    // Preview profile picture
+    function previewProfilePic(input) {
+      const preview = document.getElementById('currentProfilePic');
+      
+      if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          preview.src = e.target.result;
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    // Handle form submission
+    document.getElementById('profileForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      if (!checkAuth()) return;
+      
+      const formData = new FormData(e.target);
+      
+      // Handle profile picture upload
+      const profilePicFile = formData.get('profilePic');
+      let profilePicData = '';
+      
+      if (profilePicFile && profilePicFile.size > 0) {
+        const reader = new FileReader();
+        profilePicData = await new Promise((resolve) => {
+          reader.onload = function(e) {
+            resolve(e.target.result);
+          };
+          reader.readAsDataURL(profilePicFile);
+        });
+      }
+      
+      // Collect movies
+      const movies = [];
+      for (let i = 1; i <= 10; i++) {
+        const movie = formData.get(`movie${i}`);
+        if (movie && movie.trim()) {
+          movies.push(movie.trim());
+        }
+      }
+      
+      try {
+        const requestData = {
+          memberToken: localStorage.getItem('horror4ever_member_token'),
+          username: formData.get('username'),
+          description: formData.get('description'),
+          profilePic: profilePicData,
+          favoriteMovies: movies
+        };
+        
+        console.log('Sending profile update request:', requestData);
+        
+        const response = await fetch('/api/trivia/member/login', {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(requestData)
+        });
+
+        console.log('Profile update response status:', response.status);
+        
+        if (response.ok) {
+          const result = await response.json();
+          console.log('Profile update success:', result);
+          showMessage('Profile updated successfully!', 'success');
+          // Update localStorage with new username
+          localStorage.setItem('horror4ever_member_name', formData.get('username'));
+          // Also show alert as immediate feedback
+          alert('✅ Profile updated successfully!');
+        } else {
+          const errorData = await response.json();
+          console.error('Profile update failed:', errorData);
+          throw new Error(`Failed to update profile: ${errorData.error || 'Unknown error'}`);
+        }
+      } catch (error) {
+        console.error('Error updating profile:', error);
+        showMessage(`Failed to update profile: ${error.message}`, 'error');
+      }
+    });
+
+    // Show message
+    function showMessage(message, type) {
+      console.log('showMessage called:', message, type);
+      
+      const messageDiv = document.createElement('div');
+      messageDiv.className = type === 'success' ? 'success-message' : 'error-message';
+      messageDiv.textContent = message;
+      messageDiv.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 15px 20px;
+        border-radius: 8px;
+        color: white;
+        font-weight: bold;
+        z-index: 10000;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        animation: slideIn 0.3s ease-out;
+        ${type === 'success' ? 
+          'background: linear-gradient(135deg, #44FF44, #22AA22); border: 2px solid #00FF00;' : 
+          'background: linear-gradient(135deg, #FF4444, #AA2222); border: 2px solid #FF0000;'
+        }
+      `;
+      
+      // Add CSS animation
+      if (!document.getElementById('message-styles')) {
+        const style = document.createElement('style');
+        style.id = 'message-styles';
+        style.textContent = `
+          @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+          }
+        `;
+        document.head.appendChild(style);
+      }
+      
+      document.body.appendChild(messageDiv);
+      
+      setTimeout(() => {
+        if (messageDiv.parentNode) {
+          messageDiv.remove();
+        }
+      }, 5000);
+    }
+
+    // Initialize page
+    document.addEventListener('DOMContentLoaded', () => {
+      if (!checkAuth()) return;
+      
+      generateMovieInputs();
+      loadUserStats();
+      loadUserProfile();
+    });
+  </script>
+</body>
+</html> 
