@@ -1,7 +1,4 @@
-const express = require('express');
-const router = express.Router();
-
-// Sample horror trivia questions for the contest
+﻿// Sample horror trivia questions for the contest
 const sampleQuestions = [
   {
     id: 1,
@@ -30,19 +27,18 @@ const sampleQuestions = [
   // Note: In production, this would be 500 real questions from a database
 ];
 
-// Get trivia questions
-router.get('/questions', async (req, res) => {
+module.exports = async function handler(req, res) {
   try {
     const { limit = 20, approved = true, random = false } = req.query;
-    
+
     let questions = [...sampleQuestions];
-    
+
     // For now, return sample questions
     // In production, this would query a database
     if (limit && limit !== 'all') {
       questions = questions.slice(0, parseInt(limit));
     }
-    
+
     // For the contest, we need 500 questions
     if (limit === '500') {
       // Duplicate and modify sample questions to reach 500
@@ -58,17 +54,15 @@ router.get('/questions', async (req, res) => {
       }
       questions = extendedQuestions;
     }
-    
+
     console.log(`Returning ${questions.length} questions`);
-    
+
     res.status(200).json(questions);
-    
+
   } catch (error) {
     console.error('Error fetching questions:', error);
-    res.status(500).json({ 
-      error: 'Failed to fetch questions' 
+    res.status(500).json({
+      error: 'Failed to fetch questions'
     });
   }
-});
-
-module.exports = router;
+};
